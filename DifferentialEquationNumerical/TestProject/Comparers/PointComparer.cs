@@ -7,18 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TestProject
+namespace TestProject.Comparers
 {
-    class PeopleComparer : IComparer
+    class PointComparer : IComparer
     {
         double eps = 0.1;
 
-        public PeopleComparer(double eps)
+        public PointComparer(double eps)
         {
             this.eps = eps;
         }
 
-        public int Compare(Object? p1, Object? p2)
+        public int Compare(object? p1, object? p2)
         {
             if (p1 is null || p2 is null) throw new ArgumentException();
 
