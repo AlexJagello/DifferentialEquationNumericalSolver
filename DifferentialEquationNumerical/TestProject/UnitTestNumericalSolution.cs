@@ -23,7 +23,7 @@ namespace TestProject
             var result = DifferentialEquation.CalculateDifferentialEquation_EnumerableReturn_Eiler("dy=pow(x,2)-2*y", 0, 1, 0.1, 100, PythonCalculationClass.PythonCalculation_DifferentialEquation);
             var expected = GetTestData.GetData("Resources/dataeiler.json");
 
-            CollectionAssert.AreEqual(expected,(ICollection)result, new PointComparer(0.1));
+            CollectionAssert.AreEqual(expected, (ICollection)result, new PointComparer(0.01));
         }
 
         [TestMethod]
@@ -32,7 +32,7 @@ namespace TestProject
             var result = DifferentialEquation.CalculateDifferentialEquation_EnumerableReturn_ImpEiler("dy=pow(x,2)-2*y", 0, 1, 0.1, 100, PythonCalculationClass.PythonCalculation_DifferentialEquation);
             var expected = GetTestData.GetData("Resources/dataimpeiler.json");
 
-            CollectionAssert.AreEqual(expected, (ICollection)result, new PointComparer(0.1));
+            CollectionAssert.AreEqual(expected, (ICollection)result, new PointComparer(0.01));
         }
 
         [TestMethod]
@@ -41,7 +41,7 @@ namespace TestProject
             var result = DifferentialEquation.CalculateDifferentialEquation_EnumerableReturn_RyngeKytte("dy=pow(x,2)-2*y", 0, 1, 0.1, 100, PythonCalculationClass.PythonCalculation_DifferentialEquation);
             var expected = GetTestData.GetData("Resources/dataryngekutty.json");
 
-            CollectionAssert.AreEqual(expected, (ICollection)result, new PointComparer(0.1));
+            CollectionAssert.AreEqual(expected, (ICollection)result, new PointComparer(0.01));
         }
 
 
@@ -55,7 +55,7 @@ namespace TestProject
             var result = DifferentialEquation.CalculateDifferentialEquation_EnumerableReturn_Eiler(0, 1, 0.1, 100, ExampleDiffEquation);
             var expected = GetTestData.GetData("Resources/dataeiler.json");
 
-            CollectionAssert.AreEqual(expected, (ICollection)result, new PointComparer(0.1));
+            CollectionAssert.AreEqual(expected, (ICollection)result, new PointComparer(0.01));
         }
 
         [TestMethod]
@@ -64,7 +64,7 @@ namespace TestProject
             var result = DifferentialEquation.CalculateDifferentialEquation_EnumerableReturn_ImpEiler(0, 1, 0.1, 100, ExampleDiffEquation);
             var expected = GetTestData.GetData("Resources/dataimpeiler.json");
 
-            CollectionAssert.AreEqual(expected, (ICollection)result, new PointComparer(0.1));
+            CollectionAssert.AreEqual(expected, (ICollection)result, new PointComparer(0.01));
         }
 
         [TestMethod]
@@ -73,7 +73,7 @@ namespace TestProject
             var result = DifferentialEquation.CalculateDifferentialEquation_EnumerableReturn_RyngeKytte(0, 1, 0.1, 100, ExampleDiffEquation);
             var expected = GetTestData.GetData("Resources/dataryngekutty.json");
 
-            CollectionAssert.AreEqual(expected, (ICollection)result, new PointComparer(0.1));
+            CollectionAssert.AreEqual(expected, (ICollection)result, new PointComparer(0.01));
         }
 
         public double ExampleDiffEquation(double x, double y)

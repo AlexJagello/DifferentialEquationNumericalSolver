@@ -7,7 +7,6 @@ namespace DifferentialEquationNumerical
 {
     public static class SimpleEquation
     {
-
         public static void CalculateSimpleEquation(string expression,out double[] x, out double[] y, double x0, double step, int stepAmounts, Func<string, double, double> calculateExpression)
         {
             x = new double[stepAmounts];
@@ -35,7 +34,7 @@ namespace DifferentialEquationNumerical
             return resultMass;
         }
 
-        public static IPoint[] CalculateSimpleEquation(string expression, double x0, double step, int stepAmounts, Func<string, double, double> calculateExpression)
+        public static Point[] CalculateSimpleEquation(string expression, double x0, double step, int stepAmounts, Func<string, double, double> calculateExpression)
         {
 
             var resultMass = new Point[stepAmounts];
@@ -101,7 +100,7 @@ namespace DifferentialEquationNumerical
             return resultMass;
         }
 
-        public static IPoint[] CalculateSimpleEquation(double x0, double step, int stepAmounts, Func<double, double> calculateExpression)
+        public static Point[] CalculateSimpleEquation(double x0, double step, int stepAmounts, Func<double, double> calculateExpression)
         {
 
             var resultMass = new Point[stepAmounts];
@@ -144,7 +143,7 @@ namespace DifferentialEquationNumerical
             return await Task.Run(() => CalculateSimpleEquation_ArrayReturn(expression, x0, step, stepAmounts, calculateExpression));
         }
 
-        public static async Task<IPoint[]> CalculateSimpleEquationAsync(string expression, double x0, double step, int stepAmounts, Func<string, double, double> calculateExpression)
+        public static async Task<Point[]> CalculateSimpleEquationAsync(string expression, double x0, double step, int stepAmounts, Func<string, double, double> calculateExpression)
         {
             return await Task.Run(() => CalculateSimpleEquation(expression, x0, step, stepAmounts, calculateExpression));
         }
@@ -154,7 +153,7 @@ namespace DifferentialEquationNumerical
             return await Task.Run(() => CalculateSimpleEquation_ArrayReturn(x0, step, stepAmounts, calculateExpression));
         }
 
-        public static async Task<IPoint[]> CalculateSimpleEquationAsync(double x0, double step, int stepAmounts, Func<double, double> calculateExpression)
+        public static async Task<Point[]> CalculateSimpleEquationAsync(double x0, double step, int stepAmounts, Func<double, double> calculateExpression)
         {
             return await Task.Run(() => CalculateSimpleEquation(x0, step, stepAmounts, calculateExpression));
         }
