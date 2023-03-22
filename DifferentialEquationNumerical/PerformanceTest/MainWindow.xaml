@@ -4,9 +4,21 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PerformanceTest"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        xmlns:model="clr-namespace:PerformanceTest.Models"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance local:MainWindowViewModel}"
         Title="MainWindow" Height="450" Width="800">
+
+    <Window.Resources>
+        <ObjectDataProvider x:Key="typeNumericalSolve" MethodName="GetValues" ObjectType="{x:Type System:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="model:TypeNumericalSolve"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+    </Window.Resources>
+
     <Grid>
         <TabControl>
             <TabItem Header="Test func">
@@ -16,14 +28,53 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="50"/>
                         <RowDefinition/>
-                        <RowDefinition Height="50"/>
-                        <RowDefinition Height="50"/>
                     </Grid.RowDefinitions>
-                    
-                    <Button Grid.Column="0" Grid.RowSpan="2" Grid.Row="1" Command="{Binding EvluationFunctionCommand}"/>
-                    <Label Grid.Column="1" Grid.Row="1" Content="{Binding EvaluationTime}" />
-                    <Label Grid.Column="1" Grid.Row="2" Content="{Binding EvaluationTime2}" />
+
+                    <Grid Grid.ColumnSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="150"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="25"/>
+                        </Grid.RowDefinitions>
+
+                        <Rectangle Grid.ColumnSpan="5" Fill="#FF444444" Stroke="#FF444444"/>
+
+                        <Label Grid.Row="1" Content="Epression" Margin="5,0,5,0" />
+                        <TextBox Grid.Row="2" Text="{Binding InitialDataModelDiffEquation.Expression}" Margin="5,0,5,0" HorizontalContentAlignment="Stretch"/>
+
+                        <Label Grid.Row="1" Content="X0" Grid.Column="1" Margin="5,0,5,0"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding InitialDataModelDiffEquation.X0}" Margin="5,0,5,0"  HorizontalContentAlignment="Stretch"/>
+
+                        <Label Grid.Row="1" Content="Y0" Grid.Column="2" Margin="5,0,5,0"/>
+                        <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding InitialDataModelDiffEquation.Y0}" Margin="5,0,5,0"  HorizontalContentAlignment="Stretch"/>
+
+                        <Label Grid.Row="1" Content="Step" Grid.Column="3" Margin="5,0,5,0"/>
+                        <TextBox Grid.Row="2" Grid.Column="3" Text="{Binding InitialDataModelDiffEquation.Step}" Margin="5,0,5,0"  HorizontalContentAlignment="Stretch"/>
+
+                        <Label Grid.Row="1" Content="Amount of steps" Grid.Column="4" Margin="5,0,5,0"/>
+                        <TextBox Grid.Row="2" Grid.Column="4" Text="{Binding InitialDataModelDiffEquation.AmountOfSteps}" Margin="5,0,5,0"  HorizontalContentAlignment="Stretch"/>
+
+                        <Label Grid.Row="1" Content="Function type" Grid.Column="5" Margin="5,0,5,0"/>
+                        <ComboBox Grid.Row="2" Grid.Column="5" ItemsSource="{Binding Source={StaticResource typeNumericalSolve}}"  SelectedItem="{Binding DataInitialDiffEquation.TypeNumericalSolve}" Margin="5,0,5,0"/>
+
+                        <Button Grid.Column="6" Grid.Row="1" Grid.RowSpan="2" Content="Draw" Margin="5,0,5,0" Command="{Binding EvaluationFunctionCommand}"/>
+                    </Grid>
+
+ 
+                    <Label Grid.Column="0" Grid.Row="1" Content="{Binding EvaluationTime}" />
+                    <Label Grid.Column="1" Grid.Row="1" Content="{Binding EvaluationTime2}" />
                 </Grid>
             </TabItem>
         </TabControl>

@@ -26,12 +26,10 @@ namespace DifferentialEquationNumerical.Models
         {
             if (obj == null) return false;
 
-            if (obj.GetType() != this.GetType()) return false;
+            if(obj is Point point)  
+                if (point.X == X && point.Y == Y) return true;
 
-            Point p = (Point)obj;
-            if (p.X != X || p.Y != Y) return false;
-
-            return true;
+            return false;
         }
 
         public override int GetHashCode()

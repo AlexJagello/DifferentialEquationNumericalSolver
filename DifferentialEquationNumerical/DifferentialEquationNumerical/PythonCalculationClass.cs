@@ -32,11 +32,11 @@ namespace DifferentialEquationNumerical
             return Convert.ToDouble(res);
         }
 
-        public static double PythonCalculation_DifferentialEquation_System2D(string expression, double x, double y, double t)
+        public static double PythonCalculation_DifferentialEquation_System2D(string expression, double x, double y, double z)
         {
             scope.SetVariable("x", x);
             scope.SetVariable("y", y);
-            scope.SetVariable("t", t);
+            scope.SetVariable("z", z);
             engine.Execute("from math import *\n" + expression, scope);
             dynamic res = scope.GetVariable("dy");
             return Convert.ToDouble(res);
